@@ -1,4 +1,4 @@
-// Sidebar component
+"use client";
 import React from "react";
 import { useRouter } from "next/navigation";
 
@@ -12,7 +12,6 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
-
 
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -82,16 +81,21 @@ interface SidebarProps {
   setOpen: (open: boolean) => void;
 }
 function Sidebar({ open, setOpen }: SidebarProps) {
- 
   const router = useRouter();
   const theme = useTheme();
 
-  const handleDrawerClose = () => {setOpen(false);};
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
   const arr1 = [
     { text: "Dashboard", icon: <HomeIcon />, path: "/" },
     { text: "Team Management", icon: <PeopleAltTwoToneIcon />, path: "/users" },
-    {text: "Contact Information",icon: <ContactsTwoToneIcon />,path: "/contacts",},
+    {
+      text: "Contact Information",
+      icon: <ContactsTwoToneIcon />,
+      path: "/contacts",
+    },
     { text: "Invoices", icon: <ReceiptTwoToneIcon />, path: "/invoices" },
   ];
   const arr2 = [
@@ -133,7 +137,11 @@ function Sidebar({ open, setOpen }: SidebarProps) {
       />
       <Typography
         align="center"
-        sx={{ fontSize: open ? 18 : 0, transition: "0.50s", color:theme.palette.info.main }}
+        sx={{
+          fontSize: open ? 18 : 0,
+          transition: "0.50s",
+          color: theme.palette.info.main,
+        }}
       >
         user
       </Typography>
@@ -151,9 +159,9 @@ function Sidebar({ open, setOpen }: SidebarProps) {
         {arr1.map((item) => (
           <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
             <ListItemButton
-            onClick={()=>{
-               router.push(item.path);
-            }}
+              onClick={() => {
+                router.push(item.path);
+              }}
               sx={{
                 minHeight: 48,
                 justifyContent: open ? "initial" : "center",
@@ -184,9 +192,9 @@ function Sidebar({ open, setOpen }: SidebarProps) {
         {arr2.map((item) => (
           <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
             <ListItemButton
-            onClick={()=>{
-               router.push(item.path);
-            }}
+              onClick={() => {
+                router.push(item.path);
+              }}
               sx={{
                 minHeight: 48,
                 justifyContent: open ? "initial" : "center",
@@ -217,9 +225,9 @@ function Sidebar({ open, setOpen }: SidebarProps) {
         {arr3.map((item) => (
           <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
             <ListItemButton
-            onClick={()=>{
-               router.push(item.path);
-            }}
+              onClick={() => {
+                router.push(item.path);
+              }}
               sx={{
                 minHeight: 48,
                 justifyContent: open ? "initial" : "center",

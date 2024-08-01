@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { styled, useTheme, alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -85,15 +86,15 @@ interface NavbarProps {
 function Navbar({ open, setOpen, setMode }: NavbarProps) {
   const theme = useTheme();
 
-  
   const changeTheme = () => {
-  const newMode = theme.palette.mode === "dark" ? "light" : "dark";
-  localStorage.setItem("currentTheme", newMode);
-  setMode(newMode as PaletteMode);
+    const newMode = theme.palette.mode === "dark" ? "light" : "dark";
+    localStorage.setItem("currentTheme", newMode);
+    setMode(newMode as PaletteMode);
   };
-  
- const handleDrawerOpen = () => { setOpen(true) };
 
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
 
   return (
     <Box sx={{ display: "flex" }}>

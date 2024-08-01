@@ -1,9 +1,9 @@
 // Sidebar component
 import React from "react";
-import MuiDrawer from "@mui/material/Drawer";
+import { useRouter } from "next/navigation";
+
+import MuiDrawer, { DrawerProps } from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { styled, useTheme } from "@mui/material/styles";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
@@ -11,12 +11,27 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import Avatar from "@mui/material/Avatar";
+
+
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import HomeIcon from "@mui/icons-material/Home";
+import PeopleAltTwoToneIcon from "@mui/icons-material/PeopleAltTwoTone";
+import ContactsTwoToneIcon from "@mui/icons-material/ContactsTwoTone";
+import ReceiptTwoToneIcon from "@mui/icons-material/ReceiptTwoTone";
+import PersonOutlineTwoToneIcon from "@mui/icons-material/PersonOutlineTwoTone";
+import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonthTwoTone";
+import HelpTwoToneIcon from "@mui/icons-material/HelpTwoTone";
+import BarChartTwoToneIcon from "@mui/icons-material/BarChartTwoTone";
+import PieChartTwoToneIcon from "@mui/icons-material/PieChartTwoTone";
+import TimelineTwoToneIcon from "@mui/icons-material/TimelineTwoTone";
+import MapTwoToneIcon from "@mui/icons-material/MapTwoTone";
+import { Typography } from "@mui/material";
 
 const drawerWidth = 240;
 
-const openedMixin = (theme) => ({
+const openedMixin = (theme: any) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
@@ -25,7 +40,7 @@ const openedMixin = (theme) => ({
   overflowX: "hidden",
 });
 
-const closedMixin = (theme) => ({
+const closedMixin = (theme: any) => ({
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -39,7 +54,7 @@ const closedMixin = (theme) => ({
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
+})<DrawerProps>(({ theme, open }) => ({
   width: drawerWidth,
   flexShrink: 0,
   whiteSpace: "nowrap",
@@ -62,12 +77,35 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-function Sidebar({ open, setOpen }) {
+interface SidebarProps {
+  open: boolean;
+  setOpen: (open: boolean) => void;
+}
+function Sidebar({ open, setOpen }: SidebarProps) {
+ 
+  const router = useRouter();
   const theme = useTheme();
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const handleDrawerClose = () => {setOpen(false);};
+
+  const arr1 = [
+    { text: "Dashboard", icon: <HomeIcon />, path: "/" },
+    { text: "Team Management", icon: <PeopleAltTwoToneIcon />, path: "/users" },
+    {text: "Contact Information",icon: <ContactsTwoToneIcon />,path: "/contacts",},
+    { text: "Invoices", icon: <ReceiptTwoToneIcon />, path: "/invoices" },
+  ];
+  const arr2 = [
+    { text: "Profile", icon: <PersonOutlineTwoToneIcon />, path: "/form" },
+    { text: "Calendar", icon: <CalendarMonthTwoToneIcon />, path: "/calendar" },
+    { text: "FAQ", icon: <HelpTwoToneIcon />, path: "/faq" },
+  ];
+
+  const arr3 = [
+    { text: "Bar Chart", icon: <BarChartTwoToneIcon />, path: "/bar" },
+    { text: "Pie Chart", icon: <PieChartTwoToneIcon />, path: "/pie" },
+    { text: "Line Chart", icon: <TimelineTwoToneIcon />, path: "/line" },
+    { text: "Geo Chart", icon: <MapTwoToneIcon />, path: "/" },
+  ];
 
   return (
     <Drawer variant="permanent" open={open}>
@@ -80,11 +118,42 @@ function Sidebar({ open, setOpen }) {
           )}
         </IconButton>
       </DrawerHeader>
+
+      <Avatar
+        sx={{
+          mx: "auto",
+          height: open ? 80 : 45,
+          width: open ? 80 : 45,
+          my: 2,
+          border: "2px solid silver",
+          transition: "0.25s",
+        }}
+        alt="Remy Sharp"
+        src="https://th.bing.com/th/id/OIP.XpEhDSbIbTzkvCGO6fHI3gHaFj?w=249&h=187&c=7&r=0&o=5&dpr=1.1&pid=1.7"
+      />
+      <Typography
+        align="center"
+        sx={{ fontSize: open ? 18 : 0, transition: "0.50s", color:theme.palette.info.main }}
+      >
+        user
+      </Typography>
+      <Typography
+        align="center"
+        sx={{ fontSize: open ? 18 : 0, transition: "0.50s" }}
+      >
+        test
+      </Typography>
+
       <Divider />
+      <Divider />
+
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
+        {arr1.map((item) => (
+          <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
             <ListItemButton
+            onClick={()=>{
+               router.push(item.path);
+            }}
               sx={{
                 minHeight: 48,
                 justifyContent: open ? "initial" : "center",
@@ -98,18 +167,26 @@ function Sidebar({ open, setOpen }) {
                   justifyContent: "center",
                 }}
               >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {item.icon}
               </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText
+                primary={item.text}
+                sx={{ opacity: open ? 1 : 0 }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
+
+      <Divider />
       <Divider />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
+        {arr2.map((item) => (
+          <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
             <ListItemButton
+            onClick={()=>{
+               router.push(item.path);
+            }}
               sx={{
                 minHeight: 48,
                 justifyContent: open ? "initial" : "center",
@@ -123,13 +200,52 @@ function Sidebar({ open, setOpen }) {
                   justifyContent: "center",
                 }}
               >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {item.icon}
               </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText
+                primary={item.text}
+                sx={{ opacity: open ? 1 : 0 }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
+
+      <Divider />
+      <Divider />
+      <List>
+        {arr3.map((item) => (
+          <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
+            <ListItemButton
+            onClick={()=>{
+               router.push(item.path);
+            }}
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                {item.icon}
+              </ListItemIcon>
+              <ListItemText
+                primary={item.text}
+                sx={{ opacity: open ? 1 : 0 }}
+              />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+
+      <Divider />
+      <Divider />
     </Drawer>
   );
 }

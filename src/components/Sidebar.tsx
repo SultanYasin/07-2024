@@ -12,21 +12,13 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
-
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import HomeIcon from "@mui/icons-material/Home";
-import PeopleAltTwoToneIcon from "@mui/icons-material/PeopleAltTwoTone";
-import ContactsTwoToneIcon from "@mui/icons-material/ContactsTwoTone";
-import ReceiptTwoToneIcon from "@mui/icons-material/ReceiptTwoTone";
-import PersonOutlineTwoToneIcon from "@mui/icons-material/PersonOutlineTwoTone";
-import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonthTwoTone";
-import HelpTwoToneIcon from "@mui/icons-material/HelpTwoTone";
-import BarChartTwoToneIcon from "@mui/icons-material/BarChartTwoTone";
-import PieChartTwoToneIcon from "@mui/icons-material/PieChartTwoTone";
-import TimelineTwoToneIcon from "@mui/icons-material/TimelineTwoTone";
-import MapTwoToneIcon from "@mui/icons-material/MapTwoTone";
 import { Typography } from "@mui/material";
+
+
+import {ChevronLeftIcon,ChevronRightIcon,HomeIcon,PeopleAltTwoToneIcon,ContactsTwoToneIcon,ReceiptTwoToneIcon,
+PersonOutlineTwoToneIcon,CalendarMonthTwoToneIcon,HelpTwoToneIcon,BarChartTwoToneIcon,PieChartTwoToneIcon,
+TimelineTwoToneIcon,MapTwoToneIcon,} from "./Icons";
+
 
 const drawerWidth = 240;
 
@@ -91,24 +83,19 @@ function Sidebar({ open, setOpen }: SidebarProps) {
   const arr1 = [
     { text: "Dashboard", icon: <HomeIcon />, path: "/" },
     { text: "Team Management", icon: <PeopleAltTwoToneIcon />, path: "/users" },
-    {
-      text: "Contact Information",
-      icon: <ContactsTwoToneIcon />,
-      path: "/contacts",
-    },
     { text: "Invoices", icon: <ReceiptTwoToneIcon />, path: "/invoices" },
   ];
   const arr2 = [
-    { text: "Profile", icon: <PersonOutlineTwoToneIcon />, path: "/form" },
+    { text: "Profile", icon: <PersonOutlineTwoToneIcon />, path: "/profile" },
     { text: "Calendar", icon: <CalendarMonthTwoToneIcon />, path: "/calendar" },
     { text: "FAQ", icon: <HelpTwoToneIcon />, path: "/faq" },
   ];
 
   const arr3 = [
-    { text: "Bar Chart", icon: <BarChartTwoToneIcon />, path: "/bar" },
-    { text: "Pie Chart", icon: <PieChartTwoToneIcon />, path: "/pie" },
-    { text: "Line Chart", icon: <TimelineTwoToneIcon />, path: "/line" },
-    { text: "Geo Chart", icon: <MapTwoToneIcon />, path: "/" },
+    { text: "Bar Chart", icon: <BarChartTwoToneIcon />, path: "/chart" },
+    { text: "Pie Chart", icon: <PieChartTwoToneIcon />, path: "/chart" },
+    { text: "Line Chart", icon: <TimelineTwoToneIcon />, path: "/chart" },
+
   ];
 
   return (

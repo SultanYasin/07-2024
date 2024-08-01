@@ -40,6 +40,15 @@
   --card-border-rgb: 131, 134, 135;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 4rem 0;
+  flex-direction: column;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

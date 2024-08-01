@@ -7,18 +7,14 @@ import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import MailIcon from "@mui/icons-material/Mail";
-import SearchIcon from "@mui/icons-material/Search";
-import InputBase from "@mui/material/InputBase";
-import MenuItem from "@mui/material/MenuItem";
-import Badge from "@mui/material/Badge";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import Stack from "@mui/material/Stack";
-import Person2TwoToneIcon from "@mui/icons-material/Person2TwoTone";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import LightModeIcon from "@mui/icons-material/LightMode";
 import { PaletteMode } from "@mui/material";
+import Badge from "@mui/material/Badge";
+import InputBase from "@mui/material/InputBase";
+import Stack from "@mui/material/Stack";
+import MenuItem from "@mui/material/MenuItem";
+
+import {MenuIcon,  MailIcon, SearchIcon, NotificationsIcon, Person2TwoToneIcon, DarkModeIcon, LightModeIcon,} from "./Icons";
+
 
 const drawerWidth = 240;
 const Search = styled("div")(({ theme }) => ({
@@ -189,11 +185,7 @@ function Navbar({ open, setOpen, setMode }: NavbarProps) {
           </Stack>
         </Toolbar>
       </AppBar>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        </Typography>
-      </Box>
+     
     </Box>
   );
 }

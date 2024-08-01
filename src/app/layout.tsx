@@ -9,7 +9,7 @@ import Sidebar from "@/components/Sidebar";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { getDesignTokens } from "@/app/theme";
 import { Box, CssBaseline, PaletteMode } from "@mui/material";
-import styled  from "@mui/material/styles";
+import { styled } from "@mui/system"; ;
 
 const inter = Inter({ subsets: ["latin"] });
 

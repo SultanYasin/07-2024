@@ -1,10 +1,9 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
-import MuiDrawer, { DrawerProps } from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import { styled, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
@@ -13,17 +12,22 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
 import { Typography } from "@mui/material";
+import { grey } from "@mui/material/colors";
 
-import {DrawerHeader, Drawer, closedMixin, openedMixin } from './components_styling/sidebar_styles'
-
-
-import {ChevronLeftIcon,ChevronRightIcon,HomeIcon,PeopleAltTwoToneIcon,ContactsTwoToneIcon,ReceiptTwoToneIcon,
-PersonOutlineTwoToneIcon,CalendarMonthTwoToneIcon,HelpTwoToneIcon,BarChartTwoToneIcon,PieChartTwoToneIcon,
-TimelineTwoToneIcon,} from "./Icons";
-
-
-
-
+import { DrawerHeader, Drawer } from "./components_styling/sidebar_styles";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  HomeIcon,
+  PeopleAltTwoToneIcon,
+  ReceiptTwoToneIcon,
+  PersonOutlineTwoToneIcon,
+  CalendarMonthTwoToneIcon,
+  HelpTwoToneIcon,
+  BarChartTwoToneIcon,
+  PieChartTwoToneIcon,
+  TimelineTwoToneIcon,
+} from "./Icons";
 
 interface SidebarProps {
   open: boolean;
@@ -31,6 +35,8 @@ interface SidebarProps {
 }
 function Sidebar({ open, setOpen }: SidebarProps) {
   const router = useRouter();
+  const pathname = usePathname();
+  console.log(pathname);
   const theme = useTheme();
 
   const handleDrawerClose = () => {
@@ -52,7 +58,6 @@ function Sidebar({ open, setOpen }: SidebarProps) {
     { text: "Bar Chart", icon: <BarChartTwoToneIcon />, path: "/chart" },
     { text: "Pie Chart", icon: <PieChartTwoToneIcon />, path: "/chart" },
     { text: "Line Chart", icon: <TimelineTwoToneIcon />, path: "/chart" },
-
   ];
 
   return (
@@ -110,6 +115,12 @@ function Sidebar({ open, setOpen }: SidebarProps) {
                 minHeight: 48,
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
+                bgcolor:
+                  pathname === item.path
+                    ? theme.palette.mode === "light"
+                      ? grey[300]
+                      : grey[800]
+                    : null,
               }}
             >
               <ListItemIcon
@@ -143,6 +154,12 @@ function Sidebar({ open, setOpen }: SidebarProps) {
                 minHeight: 48,
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
+                bgcolor:
+                  pathname === item.path
+                    ? theme.palette.mode === "light"
+                      ? grey[300]
+                      : grey[800]
+                    : null,
               }}
             >
               <ListItemIcon
@@ -176,6 +193,11 @@ function Sidebar({ open, setOpen }: SidebarProps) {
                 minHeight: 48,
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
+                bgcolor:pathname === item.path
+                    ? theme.palette.mode === "light"
+                      ? grey[300]
+                      : grey[800]
+                    : null,
               }}
             >
               <ListItemIcon

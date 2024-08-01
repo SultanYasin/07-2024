@@ -2,24 +2,16 @@
 import * as React from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-
 import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import { PaletteMode } from "@mui/material";
 import Badge from "@mui/material/Badge";
-
 import Stack from "@mui/material/Stack";
 import MenuItem from "@mui/material/MenuItem";
 import {MenuIcon,  MailIcon, SearchIcon, NotificationsIcon, Person2TwoToneIcon, DarkModeIcon, LightModeIcon,} from "./Icons";
-import {
-  Search,
-  SearchIconWrapper,
-  AppBar,
-  StyledInputBase,
-  changeTheme,
-} from "./components_styling/navbar_styles";
+import { Search, SearchIconWrapper, AppBar, StyledInputBase,} from "./components_styling/navbar_styles";
 
 
 

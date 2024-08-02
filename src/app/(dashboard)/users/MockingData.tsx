@@ -223,27 +223,8 @@ export const rows: GridRowsProp = [
       },
     ];
 
-    const columns: GridColDef[] = [
-      { field: "id", headerName: "ID", width: 80 },
-      { field: "email", headerName: "NAME", flex: 1 },
-      { field: "department", headerName: "SURE NAME", flex: 1 },
-      { field: "job_title", headerName: "TITLE", flex: 1 },
-      { field: "access", headerName: "DEPARTMENT", flex: 1 },
-      {
-        field: "col6",
-        headerName: "ACCESS LEVEL",
-        flex: 1,
-        renderCell: () => {
-          return (
-            <Box>
-              <Typography> Admin </Typography>
-            </Box>
-          );
-        },
-      },
-    ];
-  
-  
 
+//_____________________________________________________________
 
+/*     INVOICE DATA    */
  

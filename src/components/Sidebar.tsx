@@ -56,8 +56,8 @@ function Sidebar({ open, setOpen }: SidebarProps) {
 
   const arr3 = [
     { text: "Bar Chart", icon: <BarChartTwoToneIcon />, path: "/chart" },
-    { text: "Pie Chart", icon: <PieChartTwoToneIcon />, path: "/chart" },
-    { text: "Line Chart", icon: <TimelineTwoToneIcon />, path: "/chart" },
+    { text: "Pie Chart", icon: <PieChartTwoToneIcon />, path: "/chart/piechart" },
+    { text: "Line Chart", icon: <TimelineTwoToneIcon />, path: "/chart/linechart" },
   ];
 
   return (

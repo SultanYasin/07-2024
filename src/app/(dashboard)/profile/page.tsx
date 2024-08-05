@@ -19,11 +19,10 @@ import { Button, Icon } from "@mui/material";
 import AdminPanelSettingsTwoToneIcon from "@mui/icons-material/AdminPanelSettingsTwoTone";
 import SupervisorAccountTwoToneIcon from "@mui/icons-material/SupervisorAccountTwoTone";
 import LockPersonTwoToneIcon from "@mui/icons-material/LockPersonTwoTone";
+import Image from "next/image";
 
-
-export  function FormControlLabelPlacement() {
-
-return (
+export function FormControlLabelPlacement() {
+  return (
     <FormControl>
       <FormLabel id="demo-form-control-label-placement">
         Label placement
@@ -58,39 +57,38 @@ return (
   );
 }
 
-
 export function BasicDatePicker() {
   return (
-    <Box sx={{
-      "& .MuiTextField-root": { mt: -1, width: "47ch" },
-    }} >
-
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={["DatePicker"]}>
-        <DatePicker label="Date of birth" />
-      </DemoContainer>
-    </LocalizationProvider>
+    <Box
+      sx={{
+        "& .MuiTextField-root": { width: "100%" },
+      }}
+    >
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DemoContainer components={["DatePicker"]}>
+          <DatePicker label="Date of birth" />
+        </DemoContainer>
+      </LocalizationProvider>
     </Box>
   );
 }
 
 export default function Profile() {
-
-  ///add each field title & type 
+  ///add each field title & type
   type Inputs = {
-    Full_Name: string
-    phoneNumber: number,
-    exampleRequired: string
-}
+    Full_Name: string;
+    phoneNumber: number;
+    exampleRequired: string;
+  };
 
+  const {register,handleSubmit,watch,formState: { errors },  } = useForm<Inputs>();
 
-  const {register,handleSubmit,watch,formState: { errors }, } = useForm<Inputs>()
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log("DATA ::::" + data)
+  const onSubmit: SubmitHandler<Inputs> = (data) =>
+    console.log("DATA ::::" + data);
 
-  console.log(watch("Full_Name")); // watch input value by passing the name of it
+  // watch input value by passing the name of it
+  console.log(watch("Full_Name")); 
 
-
-  
   const Role = [
     {
       value: "Admin",
@@ -116,8 +114,23 @@ export default function Profile() {
       sx={{
         width: "90%",
         maxWidth: "100%",
+        display: "flex",
+        flexDirection:"column"
+       
       }}
     >
+
+      {/* //TODO */}
+{/*       <Box width={"30%"}>
+
+      <Image
+        src="/register.png"
+        width={1000}
+        height={1000}
+        alt="user"
+        className=""
+        />
+        </Box> */}
       <h1>Personal Information</h1>
       <Box sx={{ gap: 2, width: "70%", mb: 3 }} style={{ display: "flex" }}>
         <TextField
@@ -126,61 +139,20 @@ export default function Profile() {
           id="outlined-basic"
           label="Full Name"
           variant="outlined"
-          error={false}
-          helperText="Required"
           {...register("Full_Name", {
             required: true,
             maxLength: 40,
             minLength: 4,
             pattern: /^[A-Za-z]+$/i,
           })}
+          error={Boolean(errors.Full_Name)}
+          helperText={Boolean(errors.Full_Name) ? "Required" : null}
         />
       </Box>
-      <Box
-        sx={{ gap: 2, width: "70%", mb: 2 }}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <TextField
-        type="number"
-          sx={{ flex: 1 }}
-          id="outlined-basic"
-          label="Social Security Number"
-          variant="outlined"
-          error={false}
-          helperText="Required"
-        />
-        <BasicDatePicker />
-      </Box>
-      <Box sx={{ gap: 2, width: "70%", mb: 2 }} style={{ display: "flex" }}>
-        <Box
-          sx={{
-            "& .MuiTextField-root": { m: 1, width: "46.5ch" },
-          }}
-          autoComplete="off"
-        >
-          <div>
-            <TextField
-              id="outlined-select-currency"
-              select
-              label="ROLE"
-              defaultValue="EUR"
-              sx={{ flex: 1 }}
-              error={false}
-              helperText="Required"
-            >
-              {Role.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  <Box sx={{ display: "flex", gap: 1 }}>
-                    {option.icon} {option.label}{" "}
-                  </Box>
-                </MenuItem>
-              ))}
-            </TextField>
-          </div>
+
+      <Box sx={{ gap: 2, width: "70%", mb: 3 }} style={{ display: "flex" }}>
+        <Box sx={{ flex: 1 }}>
+          <BasicDatePicker />
         </Box>
         <Box sx={{ display: "flex", flex: 1 }}>
           <FormControl>
@@ -213,6 +185,53 @@ export default function Profile() {
           </FormControl>
         </Box>
       </Box>
+
+      <Box
+        sx={{
+          gap: 2,
+          width: "70%",
+          height: "60px",
+          mb: 3,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <TextField
+          type="number"
+          sx={{ flex: 1 }}
+          id="outlined-basic"
+          label="Social Security Number"
+          variant="outlined"
+          error={false}
+        />
+        <Box
+          sx={{
+            "& .MuiTextField-root": { m: 1, width: "46.5ch" },
+          }}
+          autoComplete="off"
+        >
+          <div>
+            <TextField
+              id="outlined-select-currency"
+              select
+              label="ROLE"
+              defaultValue="EUR"
+              sx={{}}
+              error={false}
+            >
+              {Role.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  <Box sx={{ display: "flex", gap: 1 }}>
+                    {option.icon} {option.label}{" "}
+                  </Box>
+                </MenuItem>
+              ))}
+            </TextField>
+          </div>
+        </Box>
+      </Box>
+
       <Box sx={{ gap: 2, width: "70%", mb: 2 }} style={{ display: "flex" }}>
         <TextField
           fullWidth
@@ -220,7 +239,7 @@ export default function Profile() {
           label="Email Address"
           variant="outlined"
           error={false}
-          helperText="Required"
+          helperText=""
         />
         <TextField
           fullWidth
@@ -228,7 +247,7 @@ export default function Profile() {
           label="Phone number"
           variant="outlined"
           error={false}
-          helperText="Required"
+          helperText=""
         />
       </Box>
 
@@ -239,7 +258,7 @@ export default function Profile() {
           label="Address1"
           variant="outlined"
           error={false}
-          helperText="Required"
+          helperText=""
         />
         <TextField
           fullWidth
@@ -271,7 +290,7 @@ export default function Profile() {
           label="Emergency Person"
           variant="outlined"
           error={false}
-          helperText="Required"
+          helperText=""
         />
         <TextField
           fullWidth
@@ -279,7 +298,7 @@ export default function Profile() {
           label="Phone number"
           variant="outlined"
           error={false}
-          helperText="Required"
+          helperText=""
         />
       </Box>
       <Box sx={{ gap: 2, width: "70%", mb: 2 }} style={{ display: "flex" }}>

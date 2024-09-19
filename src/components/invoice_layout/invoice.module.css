@@ -1,0 +1,185 @@
+/* styles/Invoice.module.css */
+
+.invoiceWrapper {
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  list-style: none;
+  overflow-x: hidden;
+}
+
+.invoice {
+  max-width: 850px;
+  margin: 0 auto;
+  background-color: var(--white-color);
+  padding: 70px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  min-height: 920px;
+  background-color: whitesmoke;
+  color: black;
+}
+
+.invoiceHeadTopLeft img {
+  width: 130px;
+}
+
+.invoiceHeadTopRight h3 {
+  font-weight: 500;
+  font-size: 27px;
+  color: var(--blue-color);
+}
+
+.invoiceHeadTop,
+.invoiceHeadMiddle,
+.invoiceHeadBottom {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-bottom: 10px;
+}
+
+.invoiceHeadMiddle,
+.invoiceHeadBottom {
+  padding: 16px 0;
+}
+
+.invoiceBody {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  min-width: 600px;
+}
+
+.invoiceBody table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.invoiceBody table td,
+.invoiceBody table th {
+  padding: 12px;
+}
+
+.invoiceBody table tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.invoiceBody table thead {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.invoiceBodyInfoItem {
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+
+.infoItemTd {
+  padding: 12px;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.invoiceFoot {
+  padding: 30px 0;
+}
+
+.invoiceFoot p {
+  font-size: 12px;
+}
+
+.invoiceBtns {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.invoiceBtn {
+  padding: 3px 9px;
+  color: var(--dark-color);
+  font-family: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.textDark {
+  color: var(--dark-color);
+}
+
+.textBlue {
+  color: var(--blue-color);
+}
+
+.textEnd {
+  text-align: right;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.textStart {
+  text-align: left;
+}
+
+.textBold {
+  font-weight: 700;
+}
+
+.hr {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.borderBottom {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 992px) {
+  .invoice {
+    padding: 40px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .invoiceHeadTop,
+  .invoiceHeadMiddle,
+  .invoiceHeadBottom {
+    grid-template-columns: 1fr;
+  }
+
+  .invoiceHeadBottomRight {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .invoice * {
+    text-align: left;
+  }
+
+  .invoice {
+    padding: 28px;
+  }
+}
+
+.overflowView {
+  overflow-x: scroll;
+}
+
+@media print {
+  .invoiceWrapper {
+    visibility: visible;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+  }
+
+  .overflowView {
+    overflow-x: hidden;
+  }
+
+  .invoiceBtns {
+    display: none;
+  }
+}

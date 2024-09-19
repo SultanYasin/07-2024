@@ -19,7 +19,6 @@ import { Button, Icon } from "@mui/material";
 import AdminPanelSettingsTwoToneIcon from "@mui/icons-material/AdminPanelSettingsTwoTone";
 import SupervisorAccountTwoToneIcon from "@mui/icons-material/SupervisorAccountTwoTone";
 import LockPersonTwoToneIcon from "@mui/icons-material/LockPersonTwoTone";
-import Image from "next/image";
 
 export function FormControlLabelPlacement() {
   return (

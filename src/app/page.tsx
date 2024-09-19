@@ -9,7 +9,8 @@ export default function Home() {
     <Box height={900} width={"100%"}>
       <Box sx={{ textAlign: "right", gap: 3 }}>
         <Button variant="contained">
-          <DownloadTwoToneIcon /> DOWNLOAD
+          <DownloadTwoToneIcon />
+           DOWNLOAD
         </Button>
       </Box>
       <Row1 />

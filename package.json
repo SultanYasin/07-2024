@@ -29,6 +29,7 @@
     "mongoose": "^8.5.3",
     "next": "14.2.5",
     "react": "^18",
+    "react-calendar": "^5.0.0",
     "react-dom": "^18",
     "react-hook-form": "^7.52.2",
     "react-resizable": "^3.0.5",

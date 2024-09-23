@@ -36,7 +36,7 @@ interface SidebarProps {
 function Sidebar({ open, setOpen }: SidebarProps) {
   const router = useRouter();
   const pathname = usePathname();
-  console.log(pathname);
+
   const theme = useTheme();
 
   const handleDrawerClose = () => {
@@ -181,6 +181,7 @@ function Sidebar({ open, setOpen }: SidebarProps) {
       </List>
 
       <Divider />
+      
       <Divider />
       <List>
         {arr3.map((item) => (

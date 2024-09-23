@@ -1,7 +1,6 @@
+
 import React from "react";
-("use client");
 import { Box, Paper, Stack, Typography } from "@mui/material";
-import { Gauge } from "@mui/x-charts/Gauge";
 import { SvgIconComponent } from "@mui/icons-material";
 
 // Define the interface for the component props
@@ -19,7 +18,6 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({
   icon: Icon, // Renaming to Icon to use it as a component
   primaryText,
-  secondaryText,
   chart: Chart, // Renaming to Chart to use it as a component
   chartValue,
   chartProps,

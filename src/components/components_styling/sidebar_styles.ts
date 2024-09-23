@@ -1,19 +1,9 @@
 //sidebar: 
 "use client";
-import React from "react";
-import { useRouter } from "next/navigation";
+
 
 import MuiDrawer, { DrawerProps } from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
 import { styled, useTheme } from "@mui/material/styles";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Avatar from "@mui/material/Avatar";
-import { Typography } from "@mui/material";
 
 const drawerWidth = 240;
 

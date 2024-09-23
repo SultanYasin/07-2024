@@ -18,36 +18,6 @@ function Row1() {
       justifyContent={{ xs: "center", sm: "space-between" }}
     >
 
-      <Paper
-        sx={{
-          minWidth: "350px",
-          p: 1.5,
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <Stack gap={1}>
-          <MarkEmailReadIcon />
-          <Typography variant="body2" sx={{ color: "white" }}>
-            10
-          </Typography>
-          <Typography variant="body2" sx={{ color: "white" }}>
-            SENT
-          </Typography>
-        </Stack>
-
-        <Stack
-          alignItems={"center"}
-          gap={1}
-          direction={{ xs: "column", md: "row" }}
-          spacing={{ xs: 1, md: 3 }}
-        >
-          <Gauge width={80} height={80} value={10} />
-          <Typography variant="body2" sx={{ color: "white" }}>
-            +13%
-          </Typography>
-        </Stack>
-      </Paper>
 
       <Paper
         sx={{

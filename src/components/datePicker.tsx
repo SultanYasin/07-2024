@@ -9,14 +9,12 @@ export default function BasicDatePicker() {
 
   const [selectedDate, setSelectedDate] = useState();
 
-
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={["DatePicker"]}>
         <DatePicker
           selected={selectedDate}
           onChange={(date)=>setSelectedDate(date)}
-
           dateFormat="Pp"
         />
       </DemoContainer>

@@ -2,7 +2,12 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 type Gender = "Male" | "Female" | "Other";
-type Role = "Admin" | "Manager" | "User";
+
+  export enum UserRole {
+     EMPLOYEE = "EMPLOYEE",
+     MANAGER = "MANAGER",
+     ADMIN = "ADMIN",
+   }
 
 const user_schema = new Schema(
   {

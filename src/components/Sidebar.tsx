@@ -45,8 +45,8 @@ function Sidebar({ open, setOpen }: SidebarProps) {
 
 
   //var role = UserRole.MANAGER;
-  var role  = UserRole.EMPLOYEE
-
+  var role  = UserRole.ADMIN
+ //TODO : add tasks 
   
   const arr1 = [
     {
@@ -62,7 +62,7 @@ function Sidebar({ open, setOpen }: SidebarProps) {
       visible: ["MANAGER", "ADMIN"],
     },
     {
-      text: "Statistics",
+      text: "Tasks",
       icon: <BarChartTwoToneIcon />,
       path: "/chart",
       visible: ["MANAGER", "ADMIN"],

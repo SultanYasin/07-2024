@@ -1,49 +1,40 @@
 "use client";
 import React, { useState } from "react";
+import { DataGrid, GridRowsProp } from "@mui/x-data-grid";
+import { GridColDef, GridToolbar } from "@mui/x-data-grid";
+import { Box, Typography } from "@mui/material";
+
 import {
-  DataGrid,
-  GridRowsProp,
-  GridColDef,
-  GridToolbar,
-} from "@mui/x-data-grid";
-import { Box, Button, Typography } from "@mui/material";
-import { useTheme } from "@emotion/react";
-import { rows } from "./MockingData";
-import AdminPanelSettingsTwoToneIcon from "@mui/icons-material/AdminPanelSettingsTwoTone";
-import SupervisorAccountTwoToneIcon from "@mui/icons-material/SupervisorAccountTwoTone";
-import LockPersonTwoToneIcon from "@mui/icons-material/LockPersonTwoTone";
-import AddIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
+  AdminPanelSettingsTwoToneIcon,
+  LockPersonTwoToneIcon,
+  EditIcon,
+  SupervisorAccountTwoToneIcon,
+} from "@/components/Icons";
+
 import Fab from "@mui/material/Fab";
 import DeleteIcon from "@mui/icons-material/Delete";
-
 import { useRouter } from "next/navigation";
 import { rows as initialRows } from "./MockingData"; // Import the initial list of users
+import SearchAppBar from "@/components/SearchAppBar";
 
 
 
 export default function Users() {
-    const [userRows, setUserRows] = useState<GridRowsProp>(initialRows);
+  const [userRows, setUserRows] = useState<GridRowsProp>(initialRows);
 
-    const router = useRouter();
+  const router = useRouter();
 
-    const handleEdit = (id: number) => {
-      console.log(`Edit user with id: ${id}`);
+  const handleEdit = (id: number) => {
+    console.log(`Edit user with id: ${id}`);
     /* router.push(`/users/${id}/profile`) */
-    };
-
+  };
 
   const handleDelete = (id: number) => {
     console.log(`Delete user with id: ${id}`);
     // Filter out the user with the given id
     const updatedRows = userRows.filter((row) => row.id !== id);
-    setUserRows(updatedRows); 
+    setUserRows(updatedRows);
   };
-
-
-
-
-  const theme = useTheme();
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 70 },
@@ -65,21 +56,28 @@ export default function Users() {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor:
+              /*  backgroundColor:
                 access === "admin"
                   ? "gray"
                   : access === "manager"
                   ? "darkgray"
-                  : "silver",
+                  : "silver", */
             }}
           >
-            {access === "admin" && <AdminPanelSettingsTwoToneIcon />}
-            {access === "manager" && <SupervisorAccountTwoToneIcon />}
-            {access === "user" && <LockPersonTwoToneIcon />}
-
-            <Typography pl={2} style={{ fontSize: "18px" }}>
-              {access}
-            </Typography>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography pl={2} style={{ fontSize: "18px" }}>
+                {access}
+              </Typography>
+              {access === "admin" && <AdminPanelSettingsTwoToneIcon />}
+              {access === "manager" && <SupervisorAccountTwoToneIcon />}
+              {access === "user" && <LockPersonTwoToneIcon />}
+            </Box>
           </Box>
         );
       },
@@ -87,8 +85,8 @@ export default function Users() {
     {
       field: "action",
       headerName: "ACTION",
-      headerAlign:"center",
-    align:"center",
+      headerAlign: "center",
+      align: "center",
       flex: 1,
       renderCell: (params) => {
         const { id } = params.row;
@@ -108,7 +106,10 @@ export default function Users() {
   ];
 
   return (
-    <Box style={{ height: "85vh", width: "100%", mx: "auto" }}>
+    <Box
+      style={{ height: "88vh", width: "100%", mx: "auto", scrollX: "hidden" }}
+    >
+      <SearchAppBar />
       <DataGrid
         slots={{ toolbar: GridToolbar }}
         rows={userRows}

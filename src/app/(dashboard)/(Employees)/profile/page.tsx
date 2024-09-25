@@ -114,13 +114,11 @@ export default function Profile() {
         width: "90%",
         maxWidth: "100%",
         display: "flex",
-        flexDirection:"column"
-       
+        flexDirection: "column",
       }}
     >
-
       {/* //TODO */}
-{/*       <Box width={"30%"}>
+      {/*       <Box width={"30%"}>
 
       <Image
         src="/register.png"
@@ -151,9 +149,16 @@ export default function Profile() {
 
       <Box sx={{ gap: 2, width: "70%", mb: 3 }} style={{ display: "flex" }}>
         <Box sx={{ flex: 1 }}>
-          <BasicDatePicker />
+          <BasicDatePicker format="DD-MM-YYYY" />
         </Box>
-        <Box sx={{ display: "flex", flex: 1 }}>
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            flex: 1,
+            justifyContent: "center",
+          }}
+        >
           <FormControl>
             <FormLabel id="demo-form-control-label-placement">Gender</FormLabel>
             <RadioGroup
@@ -184,7 +189,6 @@ export default function Profile() {
           </FormControl>
         </Box>
       </Box>
-
       <Box
         sx={{
           gap: 2,
@@ -196,6 +200,7 @@ export default function Profile() {
           justifyContent: "center",
         }}
       >
+        {/* First TextField with flex: 1 */}
         <TextField
           type="number"
           sx={{ flex: 1 }}
@@ -204,25 +209,22 @@ export default function Profile() {
           variant="outlined"
           error={false}
         />
-        <Box
-          sx={{
-            "& .MuiTextField-root": { m: 1, width: "46.5ch" },
-          }}
-          autoComplete="off"
-        >
+
+        {/* Second TextField wrapped in a Box, with flex: 1 */}
+        <Box sx={{ flex: 1 }} autoComplete="off">
           <div>
             <TextField
               id="outlined-select-currency"
               select
               label="ROLE"
               defaultValue="EUR"
-              sx={{}}
+              fullWidth
               error={false}
             >
               {Role.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
                   <Box sx={{ display: "flex", gap: 1 }}>
-                    {option.icon} {option.label}{" "}
+                    {option.icon} {option.label}
                   </Box>
                 </MenuItem>
               ))}
@@ -315,7 +317,7 @@ export default function Profile() {
         />
       </Box>
       <Box sx={{ gap: 2, width: "70%", mb: 3 }} style={{ display: "flex" }}>
-        <Button type="submit" variant="contained" fullWidth>
+        <Button type="submit" variant="contained" fullWidth sx={{fontSize:"1.2em"}} onClick={()=>console.log("submitted")} >
           SUBMIT
         </Button>
       </Box>

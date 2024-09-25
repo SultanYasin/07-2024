@@ -18,8 +18,16 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import Person2TwoToneIcon from "@mui/icons-material/Person2TwoTone";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import AdminPanelSettingsTwoToneIcon from "@mui/icons-material/AdminPanelSettingsTwoTone";
+import SupervisorAccountTwoToneIcon from "@mui/icons-material/SupervisorAccountTwoTone";
+import LockPersonTwoToneIcon from "@mui/icons-material/LockPersonTwoTone";
+import EditIcon from "@mui/icons-material/Edit";
 
 export {
+  AdminPanelSettingsTwoToneIcon,
+  SupervisorAccountTwoToneIcon,
+  LockPersonTwoToneIcon,
+  EditIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   HomeIcon,
@@ -40,4 +48,5 @@ export {
   Person2TwoToneIcon,
   DarkModeIcon,
   LightModeIcon,
+  
 };

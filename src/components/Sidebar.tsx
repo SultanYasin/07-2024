@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { UserRole } from "@/lib/models/user_model";
+import { userRole } from "@/lib/Sessions";
 import IconButton from "@mui/material/IconButton";
 import { useTheme } from "@mui/material/styles";
 import List from "@mui/material/List";
@@ -44,8 +44,8 @@ function Sidebar({ open, setOpen }: SidebarProps) {
   };
 
 
-  //var role = UserRole.MANAGER;
-  var role  = UserRole.ADMIN
+  var role = userRole;
+  
  //TODO : add tasks 
   
   const arr1 = [
@@ -94,7 +94,7 @@ function Sidebar({ open, setOpen }: SidebarProps) {
       text: "ADMIN",
       icon: <HelpTwoToneIcon />,
       path: "/faq",
-      visible: [, "MANAGER", "ADMIN"],
+      visible: [  "ADMIN"],
     },
     {
       text: "MANAGER",

@@ -20,8 +20,12 @@ import AdminPanelSettingsTwoToneIcon from "@mui/icons-material/AdminPanelSetting
 import SupervisorAccountTwoToneIcon from "@mui/icons-material/SupervisorAccountTwoTone";
 import LockPersonTwoToneIcon from "@mui/icons-material/LockPersonTwoTone";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import path from "path";
+import FormModal from "@/components/Dashboard/FormModal";
 
 export function FormControlLabelPlacement() {
+
   return (
     <FormControl>
       <FormLabel id="demo-form-control-label-placement">
@@ -74,6 +78,9 @@ export function BasicDatePicker() {
 }
 
 export default function Profile() {
+
+    const pathName = usePathname();
+    const userId = pathName.split("/").pop();
   ///add each field title & type
   type Inputs = {
     Full_Name: string;
@@ -120,7 +127,7 @@ export default function Profile() {
         }}
       >
         <Box sx={{ width: "100%", padding: 0, margin: 0 }}>
-          <h1>Personal Information</h1>
+          <h1>Personal Information -{`>`} ID - {userId} </h1>
           <Box sx={{ gap: 2, width: "70%", mb: 3 }} style={{ display: "flex" }}>
             <TextField
               fullWidth
@@ -148,7 +155,8 @@ export default function Profile() {
                 display: "flex",
                 width: "100%",
                 flex: 1,
-                justifyContent: "center",
+                justifyContent: "flex-start",
+                pl:3
               }}
             >
               <FormControl>
@@ -320,6 +328,11 @@ export default function Profile() {
             >
               SUBMIT
             </Button>
+            
+          </Box>
+          <Box sx={{ gap: 2, width: "70%", mb: 3 }} style={{ display: "flex" }}>
+         
+            <FormModal type="update" table="admin" name="UPDATE" id={userId}   />
           </Box>
         </Box>
       </Box>

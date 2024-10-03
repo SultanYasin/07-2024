@@ -3,12 +3,11 @@ import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import { MenuIcon, SearchIcon } from "@/components/Icons";
+import {  SearchIcon } from "@/components/Icons";
 import { Button } from "@mui/material";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { userRole } from "@/lib/Sessions";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -51,8 +50,19 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar(id:number) {
-    const router = useRouter();
+export default function SearchAppBar({id}: {id:number}) {
+  const router = useRouter();
+  const pathname = usePathname(); 
+
+    const handleButtonClick = () => {
+      if (pathname.includes("invoice")) {
+        router.push(`/invoices/newInvoice`);
+      } else if (pathname.includes("users")) {
+        router.push(`/profile`);
+      }
+    };
+
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -69,9 +79,12 @@ export default function SearchAppBar(id:number) {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-          <Button onClick={()=>router.push(`/profile/`)} variant="contained" >
-            Add New
-          </Button>
+
+          {(userRole === "ADMIN" || userRole === "MANAGER") && (
+            <Button onClick={() => handleButtonClick()} variant="contained">
+              Add New
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </Box>

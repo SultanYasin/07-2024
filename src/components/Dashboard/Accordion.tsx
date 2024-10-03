@@ -88,13 +88,13 @@ export default function EventsAccordions() {
   ];
 
   return (
-    <div>
+    <div >
       {events.map((event) => (
         <Accordion
           key={event.id}
           expanded={expanded === `panel${event.id}`}
           onChange={handleChange(`panel${event.id}`)}
-          sx={{ margin: "4px 0", fontSize: "large" }}
+          sx={{ margin: "4px 0", fontSize: "large", paddingBottom: "1px" }}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -115,8 +115,8 @@ export default function EventsAccordions() {
             <Typography>{event.description}</Typography>
           </AccordionDetails>
           <Box>
-          <Button>Attend</Button>
-          <Button>Ignore</Button>
+            <Button>Attend</Button>
+            <Button>Ignore</Button>
           </Box>
         </Accordion>
       ))}

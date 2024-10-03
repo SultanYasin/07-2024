@@ -3,11 +3,7 @@ const { Schema } = mongoose;
 
 type Gender = "Male" | "Female" | "Other";
 
-  export enum UserRole {
-     EMPLOYEE = "EMPLOYEE",
-     MANAGER = "MANAGER",
-     ADMIN = "ADMIN",
-   }
+
 
 const user_schema = new Schema(
   {

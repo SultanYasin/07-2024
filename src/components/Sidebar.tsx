@@ -36,18 +36,17 @@ interface SidebarProps {
 function Sidebar({ open, setOpen }: SidebarProps) {
   const router = useRouter();
   const pathname = usePathname();
-  
+
   const theme = useTheme();
-  
+
   const handleDrawerClose = () => {
     setOpen(false);
   };
 
-
   var role = userRole;
-  
- //TODO : add tasks 
-  
+
+  //TODO : add tasks
+
   const arr1 = [
     {
       text: "Dashboard",
@@ -93,14 +92,14 @@ function Sidebar({ open, setOpen }: SidebarProps) {
     {
       text: "ADMIN",
       icon: <HelpTwoToneIcon />,
-      path: "/faq",
-      visible: [  "ADMIN"],
+      path: "/admin",
+      visible: ["ADMIN"],
     },
     {
       text: "MANAGER",
       icon: <PieChartTwoToneIcon />,
       path: "/chart/piechart",
-      visible: [ "MANAGER", "ADMIN"],
+      visible: ["MANAGER", "ADMIN"],
     },
     {
       text: "EMPLOYEE",
@@ -109,7 +108,6 @@ function Sidebar({ open, setOpen }: SidebarProps) {
       visible: ["EMPLOYEE", "MANAGER", "ADMIN"],
     },
   ];
-
 
   return (
     <Drawer variant="permanent" open={open}>
@@ -202,80 +200,94 @@ function Sidebar({ open, setOpen }: SidebarProps) {
       <Divider />
       <Divider />
       <List>
-        {arr2.map((item) =>  item.visible.includes(role) && ( 
-          <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              onClick={() => {
-                router.push(item.path);
-              }}
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                bgcolor:
-                  pathname === item.path
-                    ? theme.palette.mode === "light"
-                      ? grey[300]
-                      : grey[800]
-                    : null,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
+        {arr2.map(
+          (item) =>
+            item.visible.includes(role) && (
+              <ListItem
+                key={item.text}
+                disablePadding
+                sx={{ display: "block" }}
               >
-                {item.icon}
-              </ListItemIcon>
-              <ListItemText
-                primary={item.text}
-                sx={{ opacity: open ? 1 : 0 }}
-              />
-            </ListItemButton>
-          </ListItem>
-        ))}
+                <ListItemButton
+                  onClick={() => {
+                    router.push(item.path);
+                  }}
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                    bgcolor:
+                      pathname === item.path
+                        ? theme.palette.mode === "light"
+                          ? grey[300]
+                          : grey[800]
+                        : null,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {item.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.text}
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            )
+        )}
       </List>
 
       <Divider />
 
       <Divider />
       <List>
-        {arr3.map((item) => item.visible.includes(role) && (
-          <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              onClick={() => {
-                router.push(item.path);
-              }}
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                bgcolor:
-                  pathname === item.path
-                    ? theme.palette.mode === "light"
-                      ? grey[300]
-                      : grey[800]
-                    : null,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
+        {arr3.map(
+          (item) =>
+            item.visible.includes(role) && (
+              <ListItem
+                key={item.text}
+                disablePadding
+                sx={{ display: "block" }}
               >
-                {item.icon}
-              </ListItemIcon>
-              <ListItemText
-                primary={item.text}
-                sx={{ opacity: open ? 1 : 0 }}
-              />
-            </ListItemButton>
-          </ListItem>
-        ))}
+                <ListItemButton
+                  onClick={() => {
+                    router.push(item.path);
+                  }}
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                    bgcolor:
+                      pathname === item.path
+                        ? theme.palette.mode === "light"
+                          ? grey[300]
+                          : grey[800]
+                        : null,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {item.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.text}
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            )
+        )}
       </List>
 
       <Divider />
@@ -285,6 +297,3 @@ function Sidebar({ open, setOpen }: SidebarProps) {
 }
 
 export default Sidebar;
-
-
-

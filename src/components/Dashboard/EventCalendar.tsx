@@ -16,14 +16,13 @@ const EventCalendar = () => {
   const [value, onChange] = useState<Value>(new Date());
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "93vh", }}>
+    <div style={{ display: "flex", flexDirection: "column", height: "91vh", marginBottom:"1vh" }}>
       <Paper
         elevation={5}
         style={{
-          height: "22vh",
+          height: "28vh",
           borderRadius: "8px",
-          boxShadow:
-            "0 4px 20px rgba(255, 255, 255, 0.1), 0 5px 30px rgba(255, 255, 255, 0.2)",
+
         }}
       >
         <div style={{ width: "100%", height: "100%" }}>
@@ -45,7 +44,7 @@ const EventCalendar = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            height: "33vh",
+            height: "35vh",
 
             borderRadius: "8px",
             boxShadow: "0 10px 15px rgba(255, 255, 255, 0.2)",
@@ -73,7 +72,8 @@ const EventCalendar = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            height: "33vh",
+            height: "25vh",
+        
           }}
         >
           <Box

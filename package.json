@@ -26,6 +26,7 @@
     "@nivo/core": "^0.87.0",
     "axios": "^1.7.3",
     "dayjs": "^1.11.12",
+    "keycloak-js": "^26.0.0",
     "mongoose": "^8.5.3",
     "next": "14.2.5",
     "react": "^18",
